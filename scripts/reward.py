@@ -32,6 +32,8 @@ if __name__ == "__main__":
     identique = sum(reward(r["sql"], r["sql"], con) for r in lignes)
     hack = sum(reward("SELECT 1", r["sql"], con) for r in lignes)
     print(
-        f"reference vs elle-meme : {identique}/{len(lignes)}  (attendu {len(lignes)})"
+        f"reference vs elle-meme : {identique}/{len(lignes)}  (attendu {len(lignes)})"  # le test d'identité
     )
-    print(f"SELECT 1 vs reference  : {hack}/{len(lignes)}  (attendu 0)")
+    print(
+        f"SELECT 1 vs reference  : {hack}/{len(lignes)}  (attendu 0)"
+    )  # le test de la politique la plus trivial ( retoune une ligne contient 1, la requete passe mais doit etre punie par un 0)
